@@ -2,7 +2,6 @@
 A sample for php-fpm and nginx using Docker.
 
 # How to use
-```
-docker-compose up
-```
-Open "http://localhost:8080/" in your browser.
+
+1. `docker-compose up`
+1. Open "http://localhost:8080/" in your browser.
