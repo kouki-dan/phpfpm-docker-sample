@@ -1,0 +1,46 @@
+
+version: '2'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: phpfpm
+      MYSQL_DATABASE: phpfpm
+      MYSQL_USER: phpfpm
+      MYSQL_PASSWORD: phpfpm
+    networks:
+      - back
+
+  php:
+    build: ./
+    volumes:
+      - ./:/app
+    networks:
+      - back
+      - front
+    depends_on:
+      - db
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "8080:80"
+    networks:
+      - front
+    depends_on:
+      - php
+
+networks:
+  back:
+    driver: bridge
+  front:
+    driver: bridge
+
+volumes:
+  data:
+    driver: local
+
