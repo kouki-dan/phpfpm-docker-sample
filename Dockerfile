@@ -7,10 +7,13 @@ RUN apt-get update \
     && curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer
 
+RUN groupadd -r phpuser && useradd -r -g phpuser -m phpuser
+COPY . /app
+WORKDIR /app
 
-RUN groupadd -r phpuser && useradd -r -g phpuser phpuser
-COPY . /var/www/html
-WORKDIR /var/www/html
+RUN chmod -R 777 /app
 
 USER phpuser
+
+RUN composer install
 
