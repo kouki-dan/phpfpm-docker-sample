@@ -1,5 +1,7 @@
 # phpfpm-docker-sample
 A sample for php-fpm and nginx using Docker.
+If you need just a sample of phpfpm, use [this `phpfpm` tag](https://github.com/kouki-dan/phpfpm-or-laravel-docker-sample/tree/phpfpm).
+This is a laravel on docker sample code.
 
 # How to use
 
