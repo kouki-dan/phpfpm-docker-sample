@@ -12,8 +12,5 @@ COPY . /app
 WORKDIR /app
 
 RUN chmod -R 777 /app
-
 USER phpuser
-
-RUN composer install
 
